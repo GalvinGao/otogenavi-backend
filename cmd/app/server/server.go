@@ -8,9 +8,9 @@ import (
 	"github.com/rs/zerolog/log"
 	"go.uber.org/fx"
 
-	"github.com/GalvinGao/gofiber-template/internal/app"
-	"github.com/GalvinGao/gofiber-template/internal/app/appconfig"
-	"github.com/GalvinGao/gofiber-template/internal/app/appcontext"
+	"github.com/GalvinGao/otogenavi-backend/internal/app"
+	"github.com/GalvinGao/otogenavi-backend/internal/app/appconfig"
+	"github.com/GalvinGao/otogenavi-backend/internal/app/appcontext"
 )
 
 func Run() {

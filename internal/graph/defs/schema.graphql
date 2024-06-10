@@ -1,0 +1,14 @@
+scalar Any
+scalar Void
+scalar Map
+scalar Time
+scalar PointS
+
+input CoordinateWithin {
+  center: PointS
+  radiusInMeters: Float
+}
+
+extend input LocationWhereInput {
+  coordinateWithin: CoordinateWithin
+}

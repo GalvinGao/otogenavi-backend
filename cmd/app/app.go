@@ -6,8 +6,7 @@ import (
 	"github.com/rs/zerolog/log"
 	"github.com/urfave/cli/v2"
 
-	"github.com/GalvinGao/gofiber-template/cmd/app/cli/db"
-	"github.com/GalvinGao/gofiber-template/cmd/app/server"
+	"github.com/GalvinGao/otogenavi-backend/cmd/app/server"
 )
 
 func Run() {
@@ -15,7 +14,6 @@ func Run() {
 		Name: "app",
 		Commands: []*cli.Command{
 			server.Command(),
-			db.Command(),
 		},
 	}
 	if err := app.Run(os.Args); err != nil {

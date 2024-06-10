@@ -3,7 +3,7 @@ package server
 import (
 	"go.uber.org/fx"
 
-	"github.com/GalvinGao/gofiber-template/internal/server/http"
+	"github.com/GalvinGao/otogenavi-backend/internal/server/http"
 )
 
 func Module() fx.Option {

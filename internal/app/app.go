@@ -3,15 +3,14 @@ package app
 import (
 	"go.uber.org/fx"
 
-	"github.com/GalvinGao/gofiber-template/internal/app/appconfig"
-	"github.com/GalvinGao/gofiber-template/internal/app/appcontext"
-	"github.com/GalvinGao/gofiber-template/internal/controller"
-	"github.com/GalvinGao/gofiber-template/internal/infra"
-	"github.com/GalvinGao/gofiber-template/internal/repo"
-	"github.com/GalvinGao/gofiber-template/internal/server"
-	"github.com/GalvinGao/gofiber-template/internal/service"
-	"github.com/GalvinGao/gofiber-template/internal/x/logger"
-	"github.com/GalvinGao/gofiber-template/internal/x/logger/fxlogger"
+	"github.com/GalvinGao/otogenavi-backend/internal/app/appconfig"
+	"github.com/GalvinGao/otogenavi-backend/internal/app/appcontext"
+	"github.com/GalvinGao/otogenavi-backend/internal/controller"
+	"github.com/GalvinGao/otogenavi-backend/internal/infra"
+	"github.com/GalvinGao/otogenavi-backend/internal/server"
+	"github.com/GalvinGao/otogenavi-backend/internal/service"
+	"github.com/GalvinGao/otogenavi-backend/internal/x/logger"
+	"github.com/GalvinGao/otogenavi-backend/internal/x/logger/fxlogger"
 )
 
 func New(ctx appcontext.Ctx, additionalOpts ...fx.Option) *fx.App {
@@ -29,7 +28,6 @@ func New(ctx appcontext.Ctx, additionalOpts ...fx.Option) *fx.App {
 		fx.Supply(conf),
 		controller.Module(),
 		infra.Module(),
-		repo.Module(),
 		service.Module(),
 		server.Module(),
 	}

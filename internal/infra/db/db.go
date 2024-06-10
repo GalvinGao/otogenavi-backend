@@ -1,16 +1,23 @@
 package db
 
 import (
-	"database/sql"
-	"os"
+	"context"
 
-	"github.com/uptrace/bun"
-	"github.com/uptrace/bun/dialect/pgdialect"
-	"github.com/uptrace/bun/driver/pgdriver"
+	_ "github.com/lib/pq"
+	"github.com/rs/zerolog/log"
+
+	"github.com/GalvinGao/otogenavi-backend/internal/app/appconfig"
+	"github.com/GalvinGao/otogenavi-backend/internal/ent"
 )
 
-func New() *bun.DB {
-	sqldb := sql.OpenDB(pgdriver.NewConnector(pgdriver.WithDSN(os.Getenv("DATABASE_URL"))))
-	db := bun.NewDB(sqldb, pgdialect.New())
-	return db
+func New(conf *appconfig.Config) *ent.Client {
+	client, err := ent.Open("postgres", conf.DatabaseURL)
+	if err != nil {
+		log.Fatal().Err(err).Msg("failed connecting to database")
+	}
+
+	if err := client.Schema.Create(context.Background()); err != nil {
+		log.Fatal().Err(err).Msg("failed creating schema resources")
+	}
+	return client.Debug()
 }
