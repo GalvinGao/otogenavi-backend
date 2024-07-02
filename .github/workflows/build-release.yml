@@ -40,7 +40,7 @@ jobs:
         id: docker-meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/GalvinGao/gofiber-template
+          images: ghcr.io/GalvinGao/otogenavi-backend
           tags: |
             type=semver,pattern=v{{version}}
             type=ref,event=branch
