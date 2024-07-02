@@ -15,11 +15,12 @@ import (
 	"entgo.io/contrib/entgql"
 	"github.com/99designs/gqlgen/graphql"
 	"github.com/99designs/gqlgen/graphql/introspection"
+	gqlparser "github.com/vektah/gqlparser/v2"
+	"github.com/vektah/gqlparser/v2/ast"
+
 	"github.com/GalvinGao/otogenavi-backend/internal/ent"
 	"github.com/GalvinGao/otogenavi-backend/internal/model"
 	"github.com/GalvinGao/otogenavi-backend/internal/x/postgis"
-	gqlparser "github.com/vektah/gqlparser/v2"
-	"github.com/vektah/gqlparser/v2/ast"
 )
 
 // region    ************************** generated!.gotpl **************************
