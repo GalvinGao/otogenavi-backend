@@ -3,8 +3,8 @@ WORKDIR /app
 
 # builder
 FROM base AS builder
-ENV GOOS linux
-ENV GOARCH amd64
+ENV GOOS=linux
+ENV GOARCH=amd64
 
 # build-args
 ARG VERSION
