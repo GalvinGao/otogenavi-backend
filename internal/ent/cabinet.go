@@ -19,7 +19,7 @@ type Cabinet struct {
 	// ID of the ent.
 	ID string `json:"id,omitempty"`
 	// Count holds the value of the "count" field.
-	Count int `json:"count,omitempty"`
+	Count *int `json:"count,omitempty"`
 	// LocationID holds the value of the "location_id" field.
 	LocationID string `json:"location_id,omitempty"`
 	// GameID holds the value of the "game_id" field.
@@ -99,7 +99,8 @@ func (c *Cabinet) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field count", values[i])
 			} else if value.Valid {
-				c.Count = int(value.Int64)
+				c.Count = new(int)
+				*c.Count = int(value.Int64)
 			}
 		case cabinet.FieldLocationID:
 			if value, ok := values[i].(*sql.NullString); !ok {
@@ -159,8 +160,10 @@ func (c *Cabinet) String() string {
 	var builder strings.Builder
 	builder.WriteString("Cabinet(")
 	builder.WriteString(fmt.Sprintf("id=%v, ", c.ID))
-	builder.WriteString("count=")
-	builder.WriteString(fmt.Sprintf("%v", c.Count))
+	if v := c.Count; v != nil {
+		builder.WriteString("count=")
+		builder.WriteString(fmt.Sprintf("%v", *v))
+	}
 	builder.WriteString(", ")
 	builder.WriteString("location_id=")
 	builder.WriteString(c.LocationID)

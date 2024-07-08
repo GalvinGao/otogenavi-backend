@@ -171,7 +171,7 @@ func (m *CabinetMutation) Count() (r int, exists bool) {
 // OldCount returns the old "count" field's value of the Cabinet entity.
 // If the Cabinet object wasn't provided to the builder, the object is fetched from the database.
 // An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CabinetMutation) OldCount(ctx context.Context) (v int, err error) {
+func (m *CabinetMutation) OldCount(ctx context.Context) (v *int, err error) {
 	if !m.op.Is(OpUpdateOne) {
 		return v, errors.New("OldCount is only allowed on UpdateOne operations")
 	}

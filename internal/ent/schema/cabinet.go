@@ -24,6 +24,8 @@ func (Cabinet) Fields() []ent.Field {
 			Immutable().
 			DefaultFunc(entid.Cabinet),
 		field.Int("count").
+			StructTag(`json:"count,omitempty"`).
+			Nillable().
 			Optional(),
 		field.String("location_id").
 			Annotations(

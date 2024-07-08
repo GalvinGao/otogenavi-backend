@@ -163,7 +163,7 @@ func (cc *CabinetCreate) createSpec() (*Cabinet, *sqlgraph.CreateSpec) {
 	}
 	if value, ok := cc.mutation.Count(); ok {
 		_spec.SetField(cabinet.FieldCount, field.TypeInt, value)
-		_node.Count = value
+		_node.Count = &value
 	}
 	if nodes := cc.mutation.LocationIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
